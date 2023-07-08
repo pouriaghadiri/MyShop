@@ -27,6 +27,7 @@ public class Program
         builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddScoped<ISliderService, SliderService>();
         builder.Services.AddScoped<IUserTokenService, UserTokenService>();
+        builder.Services.AddScoped<IProductService, ProductService>();
 
         #region Authentication
         builder.Services.AddAuthentication( options =>

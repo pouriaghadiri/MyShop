@@ -1,4 +1,5 @@
-﻿using AngularMyApp.DataLayer.Entities.Account;
+﻿using AngularMyApp.Core.DTOs.Products;
+using AngularMyApp.DataLayer.Entities.Account;
 using AngularMyApp.DataLayer.Entities.Product;
 using AngularMyApp.DataLayer.Entities.Site;
 using System;
@@ -11,6 +12,6 @@ namespace AngularMyApp.Core.Services.Interfaces
 {
     public interface IProductService: IBaseCRUD<Product>
     {
-
+        public Task<FilterProductsDTO> FilterProductsDTO(FilterProductsDTO filterProductsDTO);
     }
 }
