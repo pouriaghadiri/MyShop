@@ -16,22 +16,41 @@ using System.Text;
 
 namespace AngularMyApp.WebAPI.Controllers
 {
-
+    /// <summary>
+    /// API endpoints for user account management.
+    /// </summary>
     public class AccountController : SiteBasicController
     {
-        #region cunstractor
+        #region Constructor
+
         private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
         private readonly IUserTokenService _userTokenService;
+
+        /// <summary>
+        /// Creates a new instance of AccountController.
+        /// </summary>
+        /// <param name="userService">The user service.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="userTokenService">The user token service.</param>
         public AccountController(IUserService userService, IConfiguration configuration, IUserTokenService userTokenService)
         {
             _userService = userService;
             _configuration = configuration;
             _userTokenService = userTokenService;
         }
+
         #endregion
 
         #region Register
+
+        /// <summary>
+        /// Registers a new user.
+        /// </summary>
+        /// <param name="register">The user registration data.</param>
+        /// <returns>Returns 200 OK if the user is registered successfully, 
+        /// 400 Bad Request if the request data is invalid, or 
+        /// 409 Conflict if the email is already registered.</returns>
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO register)
         {
@@ -41,18 +60,26 @@ namespace AngularMyApp.WebAPI.Controllers
                 switch (res)
                 {
                     case RegisterUserResult.EmailExist:
-                        return BadRequest();
+                        return Conflict();
                     default:
-                        break;
+                        return Ok();
                 }
             }
 
-
-            return Ok();
+            return BadRequest();
         }
+
         #endregion
 
         #region Login
+
+        /// <summary>
+        /// Logs in a user.
+        /// </summary>
+        /// <param name="login">The user login data.</param>
+        /// <returns>Returns 200 OK with the JWT token and the refresh token if the user is logged in successfully, 
+        /// 400 Bad Request if the request data is invalid, 404 Not Found if the user is not found, or 
+        /// 401 Unauthorized if the user is not activated.</returns>
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginUserDTO login)
         {
@@ -64,12 +91,11 @@ namespace AngularMyApp.WebAPI.Controllers
                     case LoginUserResult.IncorrectData:
                         return NotFound();
                     case LoginUserResult.NotActivated:
-                        return BadRequest();
+                        return Unauthorized();
                     case LoginUserResult.Success:
                         {
                             var user = await _userService.GetUserByEmail(login.Email);
-                            return (Ok(CreateToken(user)));
-
+                            return Ok(CreateToken(user));
                         }
                     default:
                         break;
@@ -78,6 +104,15 @@ namespace AngularMyApp.WebAPI.Controllers
 
             return BadRequest();
         }
+
+        /// <summary>
+        /// Refreshes the JWT token for a user.
+        /// </summary>
+        /// <param name="refreshToken">The refresh token associated with the user.</param>
+        /// <returns>Returns 200 OK with the new JWT token and refresh token if the refresh token is valid,
+        /// 400 Bad Request if the refresh token is invalid,
+        /// 404 Not Found if the user is not found, or 
+        /// 401 Unauthorized if the refresh token has expired.</returns>
         [HttpPost("RefreshToken")]
         public async Task<IActionResult> RefreshToken(string refreshToken)
         {
@@ -94,10 +129,16 @@ namespace AngularMyApp.WebAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
-
         }
 
+        /// <summary>
+        /// Refreshes the JWT token for a user.
+        /// </summary>
+        /// <param name="refreshToken">The refresh token associated with the user.</param>
+        /// <returns>Returns 200 OK with the new JWT token and refresh token if the refresh token is valid, 
+        /// 400 Bad Request if the refresh token is invalid,
+        /// 404 Not Found if the user is not found, or 
+        /// 401 Unauthorized if the refresh token has expired.</returns>
         private LoginResultDTO CreateToken(User user)
         {
             var tokenExp = DateTime.Now.AddMinutes(5);
@@ -145,6 +186,11 @@ namespace AngularMyApp.WebAPI.Controllers
 
         #region Check Authentication
 
+        /// <summary>
+        /// Checks if the user is authenticated and returns user information.
+        /// </summary>
+        /// <returns>Returns 200 OK with the user information if the user is authenticated, or 
+        /// 401 Unauthorized if the user is not authenticated.</returns>
         [HttpPost("CheckAuthentication")]
         public async Task<IActionResult> CheckAuthentication()
         {
@@ -169,6 +215,12 @@ namespace AngularMyApp.WebAPI.Controllers
 
         #region Activate Account
 
+
+        /// <summary>
+        /// Activates a user's account.
+        /// </summary>
+        /// <param name="activeCode">The activation code associated with the user's account.</param>
+        /// <returns>Returns 200 OK if the user's account is activated successfully, or 404 Not Found if the user is not found.</returns>
         [HttpGet("ActivateAccount/{activeCode}")]
         public async Task<IActionResult> ActivateAccount( string activeCode)
         {
