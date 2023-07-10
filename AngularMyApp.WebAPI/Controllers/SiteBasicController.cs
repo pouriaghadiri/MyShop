@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace AngularMyApp.WebAPI.Controllers
+namespace ShoppingSiteApi.WebAPI.Controllers
 {
     [Route("api/[controller]s")]
     [ApiController]

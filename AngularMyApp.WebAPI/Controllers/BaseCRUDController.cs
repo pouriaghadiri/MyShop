@@ -1,9 +1,9 @@
-﻿using AngularMyApp.Core.Services.Interfaces;
-using AngularMyApp.DataLayer.Entities.Common;
+﻿using ShoppingSiteApi.Core.Services.Interfaces;
+using ShoppingSiteApi.DataAccess.Entities.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AngularMyApp.WebAPI.Controllers
+namespace ShoppingSiteApi.WebAPI.Controllers
 {
     /// <summary>
     /// Base CRUD controller for handling CRUD operations on entities.

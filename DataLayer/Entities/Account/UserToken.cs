@@ -1,11 +1,11 @@
-﻿using AngularMyApp.DataLayer.Entities.Common;
+﻿using ShoppingSiteApi.DataAccess.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.DataLayer.Entities.Account
+namespace ShoppingSiteApi.DataAccess.Entities.Account
 {
     public class UserToken:BasicEntity
     {

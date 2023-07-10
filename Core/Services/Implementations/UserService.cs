@@ -1,7 +1,7 @@
-﻿using AngularMyApp.Core.Services.Interfaces;
-using AngularMyApp.DataLayer.DTOs.Account;
-using AngularMyApp.DataLayer.Entities.Account;
-using AngularMyApp.DataLayer.Repository;
+﻿using ShoppingSiteApi.Core.Services.Interfaces;
+using ShoppingSiteApi.DataAccess.DTOs.Account;
+using ShoppingSiteApi.DataAccess.Entities.Account;
+using ShoppingSiteApi.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.Services.Implementations
+namespace ShoppingSiteApi.Core.Services.Implementations
 {
     public class UserService : IUserService
     {

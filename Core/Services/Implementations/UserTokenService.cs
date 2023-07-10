@@ -1,9 +1,9 @@
-﻿using AngularMyApp.Core.Services.Interfaces;
-using AngularMyApp.DataLayer.Context;
-using AngularMyApp.DataLayer.Entities.Account;
-using AngularMyApp.DataLayer.Repository;
+﻿using ShoppingSiteApi.Core.Services.Interfaces;
+using ShoppingSiteApi.DataAccess.Context;
+using ShoppingSiteApi.DataAccess.Entities.Account;
+using ShoppingSiteApi.DataAccess.Repository;
 
-namespace AngularMyApp.Core.Services.Implementations
+namespace ShoppingSiteApi.Core.Services.Implementations
 {
     public class UserTokenService : IUserTokenService
     {

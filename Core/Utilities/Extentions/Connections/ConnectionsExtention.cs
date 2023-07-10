@@ -1,4 +1,4 @@
-﻿using AngularMyApp.DataLayer.Context;
+﻿using ShoppingSiteApi.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.Utilities.Extentions.Connections
+namespace ShoppingSiteApi.Core.Utilities.Extentions.Connections
 {
     public static class ConnectionsExtention
     {

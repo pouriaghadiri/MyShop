@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.DataLayer.DTOs.Account
+namespace ShoppingSiteApi.DataAccess.DTOs.Account
 {
     public class LoginUserDTO
     {

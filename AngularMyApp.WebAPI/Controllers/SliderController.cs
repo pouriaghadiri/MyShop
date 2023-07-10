@@ -1,8 +1,8 @@
-﻿using AngularMyApp.Core.Services.Interfaces;
+﻿using ShoppingSiteApi.Core.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AngularMyApp.WebAPI.Controllers
+namespace ShoppingSiteApi.WebAPI.Controllers
 {
     public class SliderController : SiteBasicController
     {

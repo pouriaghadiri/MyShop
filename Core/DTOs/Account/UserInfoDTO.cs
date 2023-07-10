@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.DTOs.Account
+namespace ShoppingSiteApi.Core.DTOs.Account
 {
     public class UserInfoDTO
     {

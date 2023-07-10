@@ -1,10 +1,10 @@
-﻿using AngularMyApp.Core.DTOs.Products;
-using AngularMyApp.Core.Services.Interfaces;
-using AngularMyApp.Core.Utilities.Extentions.PageingExtentions;
-using AngularMyApp.Core.Utilities.Paging;
-using AngularMyApp.DataLayer.Entities.Account;
-using AngularMyApp.DataLayer.Entities.Product;
-using AngularMyApp.DataLayer.Repository;
+﻿using ShoppingSiteApi.Core.DTOs.Products;
+using ShoppingSiteApi.Core.Services.Interfaces;
+using ShoppingSiteApi.Core.Utilities.Extentions.PageingExtentions;
+using ShoppingSiteApi.Core.Utilities.Paging;
+using ShoppingSiteApi.DataAccess.Entities.Account;
+using ShoppingSiteApi.DataAccess.Entities.Product;
+using ShoppingSiteApi.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.Services.Implementations
+namespace ShoppingSiteApi.Core.Services.Implementations
 {
     public class ProductCategoryService : BaseCRUD<ProductCategory> , IProductCategoryService
     {

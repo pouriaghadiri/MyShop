@@ -1,11 +1,11 @@
-﻿using AngularMyApp.DataLayer.Entities.Common;
+﻿using ShoppingSiteApi.DataAccess.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.DataLayer.Entities.Product
+namespace ShoppingSiteApi.DataAccess.Entities.Product
 {
     public class ProductSelectedCategory : BasicEntity
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.DTOs.Paging
+namespace ShoppingSiteApi.Core.DTOs.Paging
 {
     public class BasePaging
     {

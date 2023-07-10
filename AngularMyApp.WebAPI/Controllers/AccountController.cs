@@ -1,10 +1,10 @@
-﻿using AngularMyApp.Core;
-using AngularMyApp.Core.DTOs.Account;
-using AngularMyApp.Core.Services.Implementations;
-using AngularMyApp.Core.Services.Interfaces;
-using AngularMyApp.Core.Utilities.Extentions.Identity;
-using AngularMyApp.DataLayer.DTOs.Account;
-using AngularMyApp.DataLayer.Entities.Account;
+﻿using ShoppingSiteApi.Core;
+using ShoppingSiteApi.Core.DTOs.Account;
+using ShoppingSiteApi.Core.Services.Implementations;
+using ShoppingSiteApi.Core.Services.Interfaces;
+using ShoppingSiteApi.Core.Utilities.Extentions.Identity;
+using ShoppingSiteApi.DataAccess.DTOs.Account;
+using ShoppingSiteApi.DataAccess.Entities.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +14,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AngularMyApp.WebAPI.Controllers
+namespace ShoppingSiteApi.WebAPI.Controllers
 {
     /// <summary>
     /// API endpoints for user account management.

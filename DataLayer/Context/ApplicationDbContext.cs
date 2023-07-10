@@ -1,7 +1,7 @@
-﻿using AngularMyApp.DataLayer.Entities.Access;
-using AngularMyApp.DataLayer.Entities.Account;
-using AngularMyApp.DataLayer.Entities.Product;
-using AngularMyApp.DataLayer.Entities.Site;
+﻿using ShoppingSiteApi.DataAccess.Entities.Access;
+using ShoppingSiteApi.DataAccess.Entities.Account;
+using ShoppingSiteApi.DataAccess.Entities.Product;
+using ShoppingSiteApi.DataAccess.Entities.Site;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.DataLayer.Context
+namespace ShoppingSiteApi.DataAccess.Context
 {
     public class ApplicationDbContext:DbContext
     {

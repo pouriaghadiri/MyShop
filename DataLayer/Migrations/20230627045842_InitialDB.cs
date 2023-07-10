@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AngularMyApp.DataLayer.Migrations
+namespace ShoppingSiteApi.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class InitialDB : Migration

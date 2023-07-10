@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace AngularMyApp.Core
+namespace ShoppingSiteApi.Core
 {
     public static class SecurityHelper
     {

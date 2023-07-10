@@ -1,5 +1,5 @@
-﻿using AngularMyApp.DataLayer.Entities.Account;
-using AngularMyApp.DataLayer.Entities.Common;
+﻿using ShoppingSiteApi.DataAccess.Entities.Account;
+using ShoppingSiteApi.DataAccess.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.DataLayer.Entities.Access
+namespace ShoppingSiteApi.DataAccess.Entities.Access
 {
     public class UserRole:BasicEntity
     {

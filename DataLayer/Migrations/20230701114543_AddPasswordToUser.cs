@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AngularMyApp.DataLayer.Migrations
+namespace ShoppingSiteApi.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddPasswordToUser : Migration

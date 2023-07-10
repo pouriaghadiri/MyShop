@@ -1,4 +1,4 @@
-namespace AngularMyApp.WebAPI
+namespace ShoppingSiteApi.WebAPI
 {
     public class WeatherForecast
     {

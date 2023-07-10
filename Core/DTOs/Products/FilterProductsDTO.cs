@@ -1,12 +1,12 @@
-﻿using AngularMyApp.Core.DTOs.Paging;
-using AngularMyApp.DataLayer.Entities.Product;
+﻿using ShoppingSiteApi.Core.DTOs.Paging;
+using ShoppingSiteApi.DataAccess.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.DTOs.Products
+namespace ShoppingSiteApi.Core.DTOs.Products
 {
     public class FilterProductsDTO:BasePaging
     {

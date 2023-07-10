@@ -1,8 +1,8 @@
-using AngularMyApp.Core.Services.Implementations;
-using AngularMyApp.Core.Services.Interfaces;
-using AngularMyApp.Core.Utilities.Extentions.Connections;
-using AngularMyApp.DataLayer.Entities.Account;
-using AngularMyApp.DataLayer.Repository;
+using ShoppingSiteApi.Core.Services.Implementations;
+using ShoppingSiteApi.Core.Services.Interfaces;
+using ShoppingSiteApi.Core.Utilities.Extentions.Connections;
+using ShoppingSiteApi.DataAccess.Entities.Account;
+using ShoppingSiteApi.DataAccess.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;

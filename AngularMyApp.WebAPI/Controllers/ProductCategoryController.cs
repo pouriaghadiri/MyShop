@@ -1,10 +1,10 @@
-﻿using AngularMyApp.Core.Services.Implementations;
-using AngularMyApp.Core.Services.Interfaces;
-using AngularMyApp.DataLayer.Entities.Product;
+﻿using ShoppingSiteApi.Core.Services.Implementations;
+using ShoppingSiteApi.Core.Services.Interfaces;
+using ShoppingSiteApi.DataAccess.Entities.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AngularMyApp.WebAPI.Controllers
+namespace ShoppingSiteApi.WebAPI.Controllers
 {
 
     public class ProductCategoryController : BaseCRUDController<ProductCategory, IProductCategoryService>

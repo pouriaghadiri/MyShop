@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.DataLayer.Entities.Common
+namespace ShoppingSiteApi.DataAccess.Entities.Common
 {
     public class BasicEntity
     {

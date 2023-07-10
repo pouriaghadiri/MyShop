@@ -1,11 +1,11 @@
-﻿using AngularMyApp.DataLayer.Entities.Product;
+﻿using ShoppingSiteApi.DataAccess.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.Services.Interfaces
+namespace ShoppingSiteApi.Core.Services.Interfaces
 {
     public interface IBaseCRUD<T> where T : class
     {

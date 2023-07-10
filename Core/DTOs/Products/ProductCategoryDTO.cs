@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.DTOs.Products
+namespace ShoppingSiteApi.Core.DTOs.Products
 {
     internal class ProductCategoryDTO
     {

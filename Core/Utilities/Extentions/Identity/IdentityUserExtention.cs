@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.Utilities.Extentions.Identity
+namespace ShoppingSiteApi.Core.Utilities.Extentions.Identity
 {
     public static class IdentityUserExtention
     {

@@ -1,11 +1,11 @@
-﻿using AngularMyApp.Core.DTOs.Paging;
+﻿using ShoppingSiteApi.Core.DTOs.Paging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularMyApp.Core.Utilities.Paging
+namespace ShoppingSiteApi.Core.Utilities.Paging
 {
     public class Pager
     {
