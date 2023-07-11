@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ShoppingSiteApi.WebAPI.Controllers
 {
 
-    public class ProductController : BaseCRUDController<Product , IProductService>
+    public class ProductController : BaseCRUDController<ProductDTO , IProductService , Product>
     {
         #region constructor
 

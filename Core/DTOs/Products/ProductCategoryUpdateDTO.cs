@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.Core.DTOs.Products
 {
-    public class ProductCategoryDTO
+    public class ProductCategoryUpdateDTO
     {
         #region Properties
 
+        public int Id{ get; set; }
+
         public string Title { get; set; }
 
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
 
-
-        #endregion 
+        #endregion
     }
 }

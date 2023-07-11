@@ -30,10 +30,14 @@ namespace ShoppingSiteApi.Core.Services.Implementations
             await _repository.SaveChenges();
         }
 
-        public async Task DeleteByID(int entityID)
+        public async Task<int> DeleteByID(int entityID)
         {
-            await _repository.DeleteEntityById(entityID);
-            await _repository.SaveChenges();
+            var res = await _repository.DeleteEntityById(entityID);
+            if (res != 0)
+            {
+                await _repository.SaveChenges();
+            }
+            return res;
         }
 
         public async Task Update(T entity)

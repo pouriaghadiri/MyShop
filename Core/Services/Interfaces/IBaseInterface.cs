@@ -12,7 +12,7 @@ namespace ShoppingSiteApi.Core.Services.Interfaces
         Task Create(T entity);
         Task Update(T entity);
         Task Delete(T entity);
-        Task DeleteByID(int entityID);
+        Task<int> DeleteByID(int entityID);
         Task<T> GetByID(int entityID);
         Task<List<T>> GetAll();
     }

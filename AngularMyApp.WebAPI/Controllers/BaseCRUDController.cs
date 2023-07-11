@@ -11,8 +11,9 @@ namespace ShoppingSiteApi.WebAPI.Controllers
     /// <typeparam name="T">The type of the entity to perform CRUD operations on.</typeparam>
     /// <typeparam name="TService">The type of the service that implements the IBaseCRUD interface for the entity.</typeparam>
 
-    public class BaseCRUDController<T, TService> : SiteBasicController where T : BasicEntity
-                                                                       where TService : IBaseCRUD<T>
+    public class BaseCRUDController<T,TService,TClass> : SiteBasicController where T : class
+                                                                                where TClass : class
+                                                                                where TService : IBaseCRUD<TClass>
     {
         private readonly TService _service;
 
@@ -24,7 +25,8 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         {
             _service = service;
         }
-
+        /*
+         * 
         /// <summary>
         /// Creates a new entity.
         /// </summary>
@@ -32,7 +34,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         /// <returns>A status code indicating whether the operation was successful.</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Create(T entity)
+        public virtual async Task<IActionResult> Create(T entity)
         {
             await _service.Create(entity);
             return Ok();
@@ -45,7 +47,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         /// <returns>A status code indicating whether the operation was successful.</returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Update(T entity)
+        public virtual async Task<IActionResult> Update(T entity)
         {
             await _service.Update(entity);
             return Ok();
@@ -58,7 +60,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         /// <returns>A status code indicating whether the operation was successful.</returns>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete(T entity)
+        public virtual async Task<IActionResult> Delete(T entity)
         {
             await _service.Delete(entity);
             return Ok();
@@ -71,7 +73,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         /// <returns>A status code indicating whether the operation was successful.</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete(int id)
+        public virtual async Task<IActionResult> Delete(int id)
         {
             await _service.DeleteByID(id);
             return Ok();
@@ -85,7 +87,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         [HttpGet("{id}")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Get(int id)
+        public virtual async Task<IActionResult> Get(int id)
         {
             var entity = await _service.GetByID(id);
             if (entity == null)
@@ -101,9 +103,12 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         /// <returns>A list of all entities.</returns>
         [HttpGet]
         [Produces("application/json")]
-        public async Task<IActionResult> GetAll()
+        public virtual async Task<IActionResult> GetAll()
         {
             return Ok(await _service.GetAll());
         }
+
+        *
+        */
     }
 }

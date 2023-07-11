@@ -22,6 +22,8 @@ namespace ShoppingSiteApi.DataAccess.Repository
         {
             entity.CreatedWhen = DateTime.Now;
             entity.UpdatedWhen = entity.CreatedWhen;
+            entity.IsDelete = false;
+
             await dbSet.AddAsync(entity);
         }
         public void UpdateEntity(TEntity entity)
@@ -31,7 +33,12 @@ namespace ShoppingSiteApi.DataAccess.Repository
         }
         public async Task<TEntity> GetEntitiesAsyncById(int id)
         {
-            return await dbSet.SingleAsync(x => x.Id == id);
+            var a = await dbSet.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            if (a != null)
+            {
+                return await dbSet.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            }
+            return null;
         }
 
         public IQueryable<TEntity> GetEntitiesQuery()
@@ -40,15 +47,24 @@ namespace ShoppingSiteApi.DataAccess.Repository
         }
         public void DeleteEntity(TEntity entity)
         {
-            entity.IsDelete = true;
-            UpdateEntity(entity);
+            if (entity != null)
+            {
+                entity.IsDelete = true;
+                UpdateEntity(entity);
+            }
         }
 
-        public async Task DeleteEntityById(int id)
+        public async Task<int> DeleteEntityById(int id)
         {
             var entity = await GetEntitiesAsyncById(id);
-            DeleteEntity(entity);
+            if (entity != null)
+            {
+                DeleteEntity(entity);
+                return entity.Id;
+            }
+            return 0;
         }
+
         public async Task SaveChenges()
         {
             try

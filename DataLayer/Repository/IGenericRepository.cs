@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.DataAccess.Repository
 {
-    public interface IGenericRepository<TEntity> where TEntity : BasicEntity
+    public interface IGenericRepository<TEntity> where TEntity : class
     {
         IQueryable<TEntity> GetEntitiesQuery();
-        Task<TEntity> GetEntitiesAsyncById(int id);
+        Task<TEntity?> GetEntitiesAsyncById(int id);
         Task AddEntity(TEntity entity);
         void DeleteEntity(TEntity entity);
-        Task DeleteEntityById(int id);
+        Task<int> DeleteEntityById(int id);
         void UpdateEntity(TEntity entity);
         Task SaveChenges();
     }
