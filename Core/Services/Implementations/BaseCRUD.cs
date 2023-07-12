@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShoppingSiteApi.Core.DTOs.Products;
 
 namespace ShoppingSiteApi.Core.Services.Implementations
 {
@@ -48,7 +49,9 @@ namespace ShoppingSiteApi.Core.Services.Implementations
 
         public async Task<List<T>> GetAll()
         {
-            return await _repository.GetEntitiesQuery().Where(x => x.IsDelete == false).ToListAsync();
+            return await _repository.GetEntitiesQuery()
+                                    .Where(x => x.IsDelete == false)
+                                    .ToListAsync();
         }
 
         public async Task<T> GetByID(int entityID)
