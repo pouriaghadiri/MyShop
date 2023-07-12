@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ShoppingSiteApi.Core.Services.Implementations
 {
@@ -20,6 +22,51 @@ namespace ShoppingSiteApi.Core.Services.Implementations
         public ProductService(IGenericRepository<Product> repository):base(repository)
         {
             _productRepository = repository;
+        }
+
+        public async Task<Product> Create(ProductDTO entity)
+        {
+            try
+            {
+
+                Product productDetail = new()
+                {
+                    ProductName = entity.ProductName,
+                    Price = entity.Price,
+                    ShortDescription = entity.ShortDescription,
+                    Description = entity.Description,
+                    IsSpecial = entity.IsSpecial,
+                    IsExists = true,
+                    IsDelete = false
+                };
+                await _productRepository.AddEntity(productDetail);
+                await _productRepository.SaveChenges();
+                return productDetail;
+            }
+            catch (Exception ex )
+            {
+                return null;
+            }
+        }
+
+        public async Task<Product> Update(ProductUpdateDTO entity)
+        {
+            var cat = await _productRepository.GetEntitiesAsyncById(entity.Id);
+            if (cat != null)
+            {
+                cat.ProductName = entity.ProductName;
+                cat.Price = entity.Price;
+                cat.ShortDescription = entity.ShortDescription;
+                cat.Description = entity.Description;
+                cat.IsSpecial = entity.IsSpecial;
+                cat.IsExists = entity.IsExists;
+
+                _productRepository.UpdateEntity(cat);
+                await _productRepository.SaveChenges();
+                return cat;
+            }
+            return null;
+
         }
 
         public async Task<FilterProductsDTO> FilterProductsDTO(FilterProductsDTO filter)

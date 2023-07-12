@@ -13,5 +13,7 @@ namespace ShoppingSiteApi.Core.Services.Interfaces
     public interface IProductService: IBaseCRUD<Product>
     {
         public Task<FilterProductsDTO> FilterProductsDTO(FilterProductsDTO filterProductsDTO);
+        public Task<Product> Create(ProductDTO entity);
+        public Task<Product> Update(ProductUpdateDTO entity);
     }
 }

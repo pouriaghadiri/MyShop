@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.Core.DTOs.Products
 {
-    public class ProductDTO
+    public class ProductUpdateDTO
     {
         #region properties
+
+        public int Id { get; set; }
 
         [Display(Name = "عنوان")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -30,12 +32,16 @@ namespace ShoppingSiteApi.Core.DTOs.Products
         [MaxLength(100, ErrorMessage = "تعداد کاراکتر های {0} نمیتواند بیشتر از {1} باشد")]
         public string Description { get; set; }
 
-        
+
+        [Display(Name = "موجود / به اتمام رسیده")]
+        public bool IsExists { get; set; }
 
         [Display(Name = "ویژه")]
         public bool IsSpecial { get; set; }
 
 
         #endregion
+
+
     }
 }

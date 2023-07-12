@@ -28,8 +28,6 @@ namespace ShoppingSiteApi.Core.Services.Implementations
             {
                 Title = entity.Title,
                 ParentId = entity.ParentId == 0 ? null : entity.ParentId,
-                CreatedWhen = DateTime.Now,
-                UpdatedWhen = DateTime.Now,
                 IsDelete = false,
             };
             await _productCatRepository.AddEntity(productCategory);
