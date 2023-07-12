@@ -201,7 +201,7 @@ namespace ShoppingSiteApi.DataAccess.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.ProductCategory", b =>
+            modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -278,7 +278,7 @@ namespace ShoppingSiteApi.DataAccess.Migrations
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProductCategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
@@ -289,7 +289,7 @@ namespace ShoppingSiteApi.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductCategoryId");
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("ProductId");
 
@@ -389,9 +389,9 @@ namespace ShoppingSiteApi.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.ProductCategory", b =>
+            modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.Category", b =>
                 {
-                    b.HasOne("ShoppingSiteApi.DataAccess.Entities.Product.ProductCategory", "ParentCategory")
+                    b.HasOne("ShoppingSiteApi.DataAccess.Entities.Product.Category", "ParentCategory")
                         .WithMany("ProductSelectedCategories")
                         .HasForeignKey("ParentId");
 
@@ -411,9 +411,9 @@ namespace ShoppingSiteApi.DataAccess.Migrations
 
             modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.ProductSelectedCategory", b =>
                 {
-                    b.HasOne("ShoppingSiteApi.DataAccess.Entities.Product.ProductCategory", "ProductCategory")
+                    b.HasOne("ShoppingSiteApi.DataAccess.Entities.Product.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("ProductCategoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -425,7 +425,7 @@ namespace ShoppingSiteApi.DataAccess.Migrations
 
                     b.Navigation("Product");
 
-                    b.Navigation("ProductCategory");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.ProductVisit", b =>
@@ -458,7 +458,7 @@ namespace ShoppingSiteApi.DataAccess.Migrations
                     b.Navigation("ProductVisits");
                 });
 
-            modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.ProductCategory", b =>
+            modelBuilder.Entity("ShoppingSiteApi.DataAccess.Entities.Product.Category", b =>
                 {
                     b.Navigation("ProductSelectedCategories");
                 });

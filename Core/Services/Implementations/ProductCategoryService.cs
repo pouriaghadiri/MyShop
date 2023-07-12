@@ -14,17 +14,17 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.Core.Services.Implementations
 {
-    public class ProductCategoryService : BaseCRUD<ProductCategory>, IProductCategoryService
+    public class CategoryService : BaseCRUD<Category>, ICategoryService
     {
-        private readonly IGenericRepository<ProductCategory> _productCatRepository;
-        public ProductCategoryService(IGenericRepository<ProductCategory> repository) : base(repository)
+        private readonly IGenericRepository<Category> _productCatRepository;
+        public CategoryService(IGenericRepository<Category> repository) : base(repository)
         {
             _productCatRepository = repository;
         }
 
-        public async Task<ProductCategory> Create(ProductCategoryDTO entity)
+        public async Task<Category> Create(CategoryDTO entity)
         {
-            ProductCategory productCategory = new()
+            Category productCategory = new()
             {
                 Title = entity.Title,
                 ParentId = entity.ParentId == 0 ? null : entity.ParentId,
@@ -37,7 +37,7 @@ namespace ShoppingSiteApi.Core.Services.Implementations
             return productCategory;
         }
 
-        public async Task<ProductCategory> Update(ProductCategoryUpdateDTO entity)
+        public async Task<Category> Update(CategoryUpdateDTO entity)
         {
             var cat = await _productCatRepository.GetEntitiesAsyncById(entity.Id);
             if (cat != null)

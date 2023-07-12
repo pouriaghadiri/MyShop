@@ -13,13 +13,13 @@ namespace ShoppingSiteApi.DataAccess.Entities.Product
 
         public int ProductId { get; set; }
 
-        public int ProductCategoryId { get; set; }
+        public int CategoryId { get; set; }
 
 
         #endregion
         #region Relations
         public Product Product { get; set; }
-        public ProductCategory ProductCategory { get; set; }
+        public Category Category { get; set; }
         #endregion
     }
 }

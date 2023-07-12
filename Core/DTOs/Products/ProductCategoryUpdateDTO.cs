@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.Core.DTOs.Products
 {
-    public class ProductCategoryUpdateDTO
+    public class CategoryUpdateDTO
     {
         #region Properties
 

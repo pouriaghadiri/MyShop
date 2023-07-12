@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.Core.Services.Interfaces
 {
-    public interface IProductCategoryService : IBaseCRUD<ProductCategory>
+    public interface ICategoryService : IBaseCRUD<Category>
     {
-        public Task<ProductCategory> Create(ProductCategoryDTO entity);
-        public Task<ProductCategory> Update(ProductCategoryUpdateDTO entity);
+        public Task<Category> Create(CategoryDTO entity);
+        public Task<Category> Update(CategoryUpdateDTO entity);
     }
 }

@@ -8,10 +8,10 @@ using ShoppingSiteApi.Core.DTOs.Products;
 namespace ShoppingSiteApi.WebAPI.Controllers
 {
 
-    public class ProductCategoryController : SiteBasicController
+    public class CategoryController : SiteBasicController
     {
-        private readonly IProductCategoryService _productCategoryService;
-        public ProductCategoryController(IProductCategoryService productCategoryService)
+        private readonly ICategoryService _productCategoryService;
+        public CategoryController(ICategoryService productCategoryService)
         {
             _productCategoryService = productCategoryService;
         }
@@ -38,7 +38,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Create(ProductCategoryDTO entity)
+        public async Task<IActionResult> Create(CategoryDTO entity)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public virtual async Task<IActionResult> Update(ProductCategoryUpdateDTO entity)
+        public virtual async Task<IActionResult> Update(CategoryUpdateDTO entity)
         {
             var cat = await _productCategoryService.Update(entity);
             if (cat != null)
@@ -66,7 +66,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
 
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Delete(ProductCategory entity)
+        public async Task<IActionResult> Delete(Category entity)
         {
             await _productCategoryService.Delete(entity);
             return Ok();

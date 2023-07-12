@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.DataAccess.Entities.Product
 {
-    public class ProductCategory:BasicEntity
+    public class Category:BasicEntity
     {
         #region Properties
 
@@ -23,8 +23,8 @@ namespace ShoppingSiteApi.DataAccess.Entities.Product
 
         [ForeignKey("ParentId")]
         [JsonIgnore] // ignore this property during serialization
-        public ProductCategory ParentCategory { get; set; }
-        public ICollection<ProductCategory> ProductSelectedCategories { get; set; }
+        public Category CategoryDetail { get; set; }
+        public ICollection<Category> ProductSelectedCategories { get; set; }
 
         #endregion
     }
