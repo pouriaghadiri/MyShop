@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.Core.DTOs.Products
 {
-    public class ProductCategoryDTO
+    public class CategoryDTO
     {
         #region Properties
 
-        public int ProductId { get; set; }
+        public string Title { get; set; }
 
-        public int CategoryId { get; set; }
+        public int ParentId { get; set; }
 
 
         #endregion 

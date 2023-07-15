@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 public class Program
 {
@@ -17,7 +18,16 @@ public class Program
 
         // Add services to the container.
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers()
+                        .AddJsonOptions(options =>
+                        {
+                            // config to prevent Cycle
+                            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                            options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                            options.JsonSerializerOptions.IgnoreNullValues = true;
+
+                        });
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -29,9 +39,10 @@ public class Program
         builder.Services.AddScoped<IUserTokenService, UserTokenService>();
         builder.Services.AddScoped<IProductService, ProductService>();
         builder.Services.AddScoped<ICategoryService, CategoryService>();
+        builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
 
         #region Authentication
-        builder.Services.AddAuthentication( options =>
+        builder.Services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -73,11 +84,11 @@ public class Program
             app.UseSwaggerUI();
         }
         app.UseCors("CORSPolicy");
-        
+
         app.UseAuthentication();
 
         app.UseAuthorization();
-        
+
         app.UseStaticFiles();
 
         app.UseHttpsRedirection();

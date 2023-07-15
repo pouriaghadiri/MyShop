@@ -15,7 +15,9 @@ namespace ShoppingSiteApi.DataAccess.Context
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {
-            
+            //this.Configuration.LazyLoadingEnabled = false;
+            //this.Configuration.ProxyCreationEnabled = false;
+
         }
 
         #region Db Sets

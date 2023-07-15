@@ -23,7 +23,13 @@ namespace ShoppingSiteApi.Core.Services.Implementations
         {
             _productRepository = repository;
         }
-
+        public override async Task<List<Product>> GetAll()
+        {
+            return await _productRepository.GetEntitiesQuery()
+                                    .Where(x => x.IsDelete == false)
+                                    .Include(x => x.ProductSelectedCategories)
+                                    .ToListAsync();
+        }
         public async Task<Product> Create(ProductDTO entity)
         {
             try
@@ -71,7 +77,8 @@ namespace ShoppingSiteApi.Core.Services.Implementations
 
         public async Task<FilterProductsDTO> FilterProductsDTO(FilterProductsDTO filter)
         {
-            var productsQuery = _productRepository.GetEntitiesQuery().AsQueryable();
+            var productsQuery = _productRepository.GetEntitiesQuery().AsQueryable()
+                ;
 
             if (!string.IsNullOrEmpty(filter.Title))
                 productsQuery = productsQuery.Where(s => s.ProductName.Contains(filter.Title));
@@ -81,6 +88,8 @@ namespace ShoppingSiteApi.Core.Services.Implementations
             {
                 productsQuery = productsQuery.Where(s => s.Price <= filter.EndPrice);
             }
+
+            productsQuery = productsQuery.Include(x => x.ProductSelectedCategories);
 
             var count = (int)Math.Ceiling(productsQuery.Count() / (double)filter.TakeEntity); // بدست آوردن تعداد کل صفحات
 

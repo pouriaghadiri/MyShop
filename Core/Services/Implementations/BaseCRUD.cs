@@ -47,7 +47,7 @@ namespace ShoppingSiteApi.Core.Services.Implementations
             await _repository.SaveChenges();
         }
 
-        public async Task<List<T>> GetAll()
+        public virtual async Task<List<T>> GetAll()
         {
             return await _repository.GetEntitiesQuery()
                                     .Where(x => x.IsDelete == false)
