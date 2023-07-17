@@ -7,7 +7,9 @@ using ShoppingSiteApi.Core.DTOs.Products;
 
 namespace ShoppingSiteApi.WebAPI.Controllers
 {
-
+    /// <summary>
+    /// Controller that provides CRUD operations for categories.
+    /// </summary>
     public class CategoryController : SiteBasicController
     {
         private readonly ICategoryService _productCategoryService;
@@ -16,6 +18,11 @@ namespace ShoppingSiteApi.WebAPI.Controllers
             _productCategoryService = productCategoryService;
         }
 
+        /// <summary>
+        /// Retrieves a single category by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the category to retrieve.</param>
+        /// <returns>The category with the given ID.</returns>
         [HttpGet("{id}")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -28,7 +35,10 @@ namespace ShoppingSiteApi.WebAPI.Controllers
             }
             return Ok(entity);
         }
-
+        /// <summary>
+        /// Retrieves all categories in the system.
+        /// </summary>
+        /// <returns>All categories in the system.</returns>
         [HttpGet]
         [Produces("application/json")]
         public async Task<IActionResult> GetAll()
@@ -36,6 +46,11 @@ namespace ShoppingSiteApi.WebAPI.Controllers
             return Ok(await _productCategoryService.GetAll());
         }
 
+        /// <summary>
+        /// Creates a new category.
+        /// </summary>
+        /// <param name="entity">The data for the new category.</param>
+        /// <returns>The new category.</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> Create(CategoryDTO entity)
@@ -51,6 +66,11 @@ namespace ShoppingSiteApi.WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates an existing category.
+        /// </summary>
+        /// <param name="entity">The data for the category to update.</param>
+        /// <returns>The updated category.</returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public virtual async Task<IActionResult> Update(CategoryUpdateDTO entity)
@@ -63,7 +83,11 @@ namespace ShoppingSiteApi.WebAPI.Controllers
             return NotFound();
 
         }
-
+        /// <summary>
+        /// Deletes an existing category.
+        /// </summary>
+        /// <param name="entity">The category to delete.</param>
+        /// <returns>An HTTP status code indicating whether the operation was successful.</returns>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete(Category entity)
@@ -72,6 +96,11 @@ namespace ShoppingSiteApi.WebAPI.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Deletes an existing category by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the category to delete.</param>
+        /// <returns>An HTTP status code indicating whether the operation was successful.</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Delete(int id)
