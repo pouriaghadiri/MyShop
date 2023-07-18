@@ -19,9 +19,11 @@ namespace ShoppingSiteApi.Core.Services.Implementations
     public class ProductService : BaseCRUD<Product> , IProductService
     {
         private readonly IGenericRepository<Product> _productRepository;
-        public ProductService(IGenericRepository<Product> repository):base(repository)
+        private readonly IGenericRepository<ProductSelectedCategory> _productCategoryRepository;
+        public ProductService(IGenericRepository<Product> repository , IGenericRepository<ProductSelectedCategory> productCategoryRepository) :base(repository)
         {
             _productRepository = repository;
+            _productCategoryRepository = productCategoryRepository;
         }
         public override async Task<List<Product>> GetAll()
         {
@@ -98,6 +100,26 @@ namespace ShoppingSiteApi.Core.Services.Implementations
             var products = await productsQuery.Paging(pager).ToListAsync();
 
             return filter.SetProducts(products).SetPaging(pager);
+        }
+
+        public async Task<List<Product>> GetRelatedProducts(int productId)
+        {
+            var currentproduct = await _productRepository.GetEntitiesAsyncById(productId);
+            
+            var currentCats = await _productCategoryRepository.GetEntitiesQuery()
+                                                        .Where(x => x.ProductId == productId)
+                                                        .Select(s => s.CategoryId)
+                                                        .ToListAsync();
+            
+            var relatedproducts = await _productRepository.GetEntitiesQuery()
+                                                            .SelectMany(s => s.ProductSelectedCategories.Where(x => currentCats.Contains(x.CategoryId))
+                                                             .Select(s => s.Product))
+                                                            .Where( x => x.Id !=  productId)
+                                                            .OrderByDescending(o => o.CreatedWhen)
+                                                            .Take(4)
+                                                            .Distinct()
+                                                            .ToListAsync();
+            return relatedproducts;
         }
     }
 }

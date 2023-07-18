@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.Core.Services.Interfaces
 {
-    public interface IProductService: IBaseCRUD<Product>
+    public interface IProductGalleryService : IBaseCRUD<ProductGallery>
     {
-        public Task<FilterProductsDTO> FilterProductsDTO(FilterProductsDTO filterProductsDTO);
-        public Task<Product> Create(ProductDTO entity);
-        public Task<Product> Update(ProductUpdateDTO entity);
-        public Task<List<Product>> GetRelatedProducts(int productId);
+        //public Task<ProductGallery> Create(ProductGallery entity);
+        //public Task<ProductGallery> Update(ProductGallery entity);
+        public Task<List<ProductGallery>> GetActiveProductGallery(int id);
     }
 }

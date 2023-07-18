@@ -27,6 +27,7 @@ public class Program
                             options.JsonSerializerOptions.IgnoreNullValues = true;
 
                         });
+        #region DI
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -40,6 +41,9 @@ public class Program
         builder.Services.AddScoped<IProductService, ProductService>();
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
+        builder.Services.AddScoped<IProductGalleryService, ProductGalleryService>();
+
+        #endregion
 
         #region Authentication
         builder.Services.AddAuthentication(options =>

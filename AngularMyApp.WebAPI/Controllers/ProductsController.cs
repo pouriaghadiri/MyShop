@@ -13,10 +13,12 @@ namespace ShoppingSiteApi.WebAPI.Controllers
     {
         private readonly IProductService _productService;
         private readonly IProductCategoryService _productCategoryService;
-        public ProductController(IProductService productProductService , IProductCategoryService productCategoryService)
+        private readonly IProductGalleryService  _productGalleryService;
+        public ProductController(IProductService productProductService , IProductCategoryService productCategoryService , IProductGalleryService productGalleryService)
         {
             _productService = productProductService;
             _productCategoryService = productCategoryService;
+            _productGalleryService = productGalleryService;
         }
 
         #region Products 
@@ -31,6 +33,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public virtual async Task<IActionResult> Get(int id)
         {
+            var productGallery = await _productGalleryService.GetActiveProductGallery(id);
             var entity = await _productService.GetByID(id);
             if (entity == null)
             {
@@ -196,5 +199,32 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         }
 
         #endregion
+
+        #region Product Gallery
+
+        [HttpGet("GetActiveProductGallery/{productId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetActiveProductGallery(int productId)
+        {
+            var a = await _productGalleryService.GetActiveProductGallery(productId);
+            if (a == null)
+            {
+                return NotFound();
+            }
+            return Ok(a);
+        }
+        #endregion
+
+        #region Related Products
+
+        [HttpGet("GetRelatedProducts/{productID}")]
+        public async Task<IActionResult> GetRelatedProducts(int productID)
+        {
+            return Ok(await _productService.GetRelatedProducts(productID));
+        }
+
+        #endregion
+
+
     }
 }
