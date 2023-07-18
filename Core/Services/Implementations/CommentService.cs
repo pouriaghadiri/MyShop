@@ -14,9 +14,12 @@ namespace ShoppingSiteApi.Core.Services.Implementations
     public class CommentService : BaseCRUD<Comment>, ICommentService
     {
         private readonly IGenericRepository<Comment> _Commentrepository;
-        public CommentService(IGenericRepository<Comment> CommentRepository):base(CommentRepository)
+        private readonly IGenericRepository<Product> _ProductRepository;
+        public CommentService(IGenericRepository<Comment> CommentRepository, IGenericRepository<Product> productRepository) : base(CommentRepository)
         {
             _Commentrepository = CommentRepository;
+            _ProductRepository = productRepository;
+
         }
 
         public async Task<List<Comment>> GetActiveProductComments(int productId)
@@ -24,20 +27,25 @@ namespace ShoppingSiteApi.Core.Services.Implementations
             return await _Commentrepository.GetEntitiesQuery().Where(x => !x.IsDelete && x.ProductId == productId).ToListAsync();
         }
 
-        async Task<Comment> ICommentService.Create(CommentDTO entity)
+        async Task<Comment> ICommentService.Create(AddCommentDTO entity , int userId)
         {
-            Comment comment = new()
+            var product = await _ProductRepository.GetEntitiesAsyncById(entity.ProductId);
+            if (product != null)
             {
-                CommentText = entity.CommentText,
-                CreatedWhen = entity.CreatedWhen,
-                IsDelete = entity.IsDelete,
-                ProductId = entity.ProductId,
-                UserId = entity.UserId,
-            };
-            await _Commentrepository.AddEntity(comment);
-            await _Commentrepository.SaveChenges();
+                Comment comment = new()
+                {
+                    CommentText = entity.CommentText,
+                    IsDelete = entity.IsDelete,
+                    ProductId = entity.ProductId,
+                    UserId = userId,
+                };
+                await _Commentrepository.AddEntity(comment);
+                await _Commentrepository.SaveChenges();
 
-            return comment;
+                return comment;
+            }
+            return null;
+            
         }
 
     }

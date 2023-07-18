@@ -3,6 +3,7 @@ using ShoppingSiteApi.Core.Services.Interfaces;
 using ShoppingSiteApi.DataAccess.Entities.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingSiteApi.Core.Utilities.Extentions.Identity;
 
 namespace ShoppingSiteApi.WebAPI.Controllers
 {
@@ -256,11 +257,16 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         }
 
         [HttpPost("ProductComment")]
-        public async Task<IActionResult> ProductCommetn (CommentDTO entity)
+        public async Task<IActionResult> ProductCommetn (AddCommentDTO entity)
         {
             try
             {
-                var comment = await _commentService.Create(entity);
+                var userId = User.GetUserID();
+                if (userId == 0)
+                {
+                    return Forbid();
+                }
+                var comment = await _commentService.Create(entity , userId);
                 if (comment != null)
                 {
                     return CreatedAtAction(nameof(GetComment), new { id = comment.Id }, comment);
