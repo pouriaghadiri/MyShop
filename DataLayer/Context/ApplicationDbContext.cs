@@ -40,6 +40,8 @@ namespace ShoppingSiteApi.DataAccess.Context
         public DbSet<ProductSelectedCategory> ProductSelectedCategories { get; set; }
 
         public DbSet<ProductVisit> ProductVisits { get; set; }
+        
+        public DbSet<Comment> Comments{ get; set; }
         #endregion
 
         #region disable cascading delete in database

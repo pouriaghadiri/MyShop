@@ -14,11 +14,16 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         private readonly IProductService _productService;
         private readonly IProductCategoryService _productCategoryService;
         private readonly IProductGalleryService  _productGalleryService;
-        public ProductController(IProductService productProductService , IProductCategoryService productCategoryService , IProductGalleryService productGalleryService)
+        private readonly ICommentService  _commentService;
+        public ProductController(IProductService productProductService ,
+                                    IProductCategoryService productCategoryService ,
+                                    IProductGalleryService productGalleryService , 
+                                    ICommentService commentService)
         {
             _productService = productProductService;
             _productCategoryService = productCategoryService;
             _productGalleryService = productGalleryService;
+            _commentService = commentService;
         }
 
         #region Products 
@@ -225,6 +230,50 @@ namespace ShoppingSiteApi.WebAPI.Controllers
 
         #endregion
 
+        #region Commetn
+
+        [HttpGet("GetProductComments/{productId}")]
+        public async Task<IActionResult> GetProductComment(int productId)
+        {
+            var comments = await _commentService.GetActiveProductComments(productId);
+            if (comments != null)
+            {
+                return Ok(comments);
+            }
+            return NotFound();
+        }
+
+
+        [HttpGet("GetComment/{id}")]
+        public async Task<IActionResult> GetComment(int id)
+        {
+            var comments = await _commentService.GetByID(id);
+            if (comments != null)
+            {
+                return Ok(comments);
+            }
+            return NotFound();
+        }
+
+        [HttpPost("ProductComment")]
+        public async Task<IActionResult> ProductCommetn (CommentDTO entity)
+        {
+            try
+            {
+                var comment = await _commentService.Create(entity);
+                if (comment != null)
+                {
+                    return CreatedAtAction(nameof(GetComment), new { id = comment.Id }, comment);
+                }
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        #endregion
 
     }
 }

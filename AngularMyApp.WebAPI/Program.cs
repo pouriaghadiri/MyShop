@@ -42,6 +42,7 @@ public class Program
         builder.Services.AddScoped<ICategoryService, CategoryService>();
         builder.Services.AddScoped<IProductCategoryService, ProductCategoryService>();
         builder.Services.AddScoped<IProductGalleryService, ProductGalleryService>();
+        builder.Services.AddScoped<ICommentService, CommentService>();
 
         #endregion
 

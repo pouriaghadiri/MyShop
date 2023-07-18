@@ -1,5 +1,6 @@
 ﻿using ShoppingSiteApi.DataAccess.Entities.Access;
 using ShoppingSiteApi.DataAccess.Entities.Common;
+using ShoppingSiteApi.DataAccess.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -45,7 +46,10 @@ namespace ShoppingSiteApi.DataAccess.Entities.Account
 
         #region Relations
         public ICollection<UserRole> userRoles { get; set; }
+     
         public ICollection<UserToken> UserTokens{ get; set; }
+        
+        public ICollection<Comment> Comments{ get; set; }
         #endregion
     }
 }

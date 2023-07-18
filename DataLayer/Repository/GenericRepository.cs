@@ -33,10 +33,10 @@ namespace ShoppingSiteApi.DataAccess.Repository
         }
         public async Task<TEntity> GetEntitiesAsyncById(int id)
         {
-            var a = await dbSet.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
-            if (a != null)
+            var entity = await dbSet.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+            if (entity != null)
             {
-                return await dbSet.SingleOrDefaultAsync(x => x.Id == id && !x.IsDelete);
+                return entity;
             }
             return null;
         }

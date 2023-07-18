@@ -27,7 +27,6 @@ namespace ShoppingSiteApi.DataAccess.Entities.Product
 
         [Display(Name = "توضیحات")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(100, ErrorMessage = "تعداد کاراکتر های {0} نمیتواند بیشتر از {1} باشد")]
         public string Description { get; set; }
 
         [Display(Name = "نام تصویر")]
@@ -50,6 +49,8 @@ namespace ShoppingSiteApi.DataAccess.Entities.Product
         public ICollection<ProductVisit>? ProductVisits { get; set; }
 
         public ICollection<ProductSelectedCategory>? ProductSelectedCategories { get; set; }
+        
+        public ICollection<Comment>? Commetns{ get; set; }
 
         #endregion
 
