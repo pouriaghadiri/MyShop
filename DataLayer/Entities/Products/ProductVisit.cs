@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingSiteApi.DataAccess.Entities.Product
+namespace ShoppingSiteApi.DataAccess.Entities.Products
 {
     public class ProductVisit : BasicEntity
     {

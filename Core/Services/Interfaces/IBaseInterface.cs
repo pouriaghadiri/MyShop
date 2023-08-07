@@ -1,4 +1,4 @@
-﻿using ShoppingSiteApi.DataAccess.Entities.Product;
+﻿using ShoppingSiteApi.DataAccess.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,12 +1,8 @@
 ﻿using ShoppingSiteApi.DataAccess.Entities.Access;
 using ShoppingSiteApi.DataAccess.Entities.Common;
-using ShoppingSiteApi.DataAccess.Entities.Product;
-using System;
-using System.Collections.Generic;
+using ShoppingSiteApi.DataAccess.Entities.Orders;
+using ShoppingSiteApi.DataAccess.Entities.Products;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingSiteApi.DataAccess.Entities.Account
 {
@@ -50,6 +46,9 @@ namespace ShoppingSiteApi.DataAccess.Entities.Account
         public ICollection<UserToken> UserTokens{ get; set; }
         
         public ICollection<Comment> Comments{ get; set; }
+
+        public ICollection<Order> Orders{ get; set; }
+
         #endregion
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingSiteApi.DataAccess.Entities.Product
+namespace ShoppingSiteApi.DataAccess.Entities.Products
 {
     public class Comment : BasicEntity
     {
@@ -17,7 +17,7 @@ namespace ShoppingSiteApi.DataAccess.Entities.Product
 
 
         public Product product { get; set; }
-        public User User{ get; set; }
+        public User User { get; set; }
 
     }
 }

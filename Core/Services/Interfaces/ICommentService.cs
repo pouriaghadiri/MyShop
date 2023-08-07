@@ -1,5 +1,5 @@
 ﻿using ShoppingSiteApi.Core.DTOs.Products;
-using ShoppingSiteApi.DataAccess.Entities.Product;
+using ShoppingSiteApi.DataAccess.Entities.Products;
 
 namespace ShoppingSiteApi.Core.Services.Interfaces
 {

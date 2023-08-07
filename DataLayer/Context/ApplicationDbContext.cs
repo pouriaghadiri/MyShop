@@ -1,6 +1,5 @@
 ﻿using ShoppingSiteApi.DataAccess.Entities.Access;
 using ShoppingSiteApi.DataAccess.Entities.Account;
-using ShoppingSiteApi.DataAccess.Entities.Product;
 using ShoppingSiteApi.DataAccess.Entities.Site;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShoppingSiteApi.DataAccess.Entities.Products;
+using ShoppingSiteApi.DataAccess.Entities.Orders;
 
 namespace ShoppingSiteApi.DataAccess.Context
 {
@@ -42,6 +43,8 @@ namespace ShoppingSiteApi.DataAccess.Context
         public DbSet<ProductVisit> ProductVisits { get; set; }
         
         public DbSet<Comment> Comments{ get; set; }
+        public DbSet<Order> Orders{ get; set; }
+        public DbSet<OrderDetail> OrderDetails{ get; set; }
         #endregion
 
         #region disable cascading delete in database

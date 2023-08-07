@@ -1,4 +1,5 @@
 ﻿using ShoppingSiteApi.DataAccess.Entities.Common;
+using ShoppingSiteApi.DataAccess.Entities.Orders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShoppingSiteApi.DataAccess.Entities.Product
+namespace ShoppingSiteApi.DataAccess.Entities.Products
 {
-    public class Product:BasicEntity
+    public class Product : BasicEntity
     {
         #region properties
 
@@ -49,8 +50,11 @@ namespace ShoppingSiteApi.DataAccess.Entities.Product
         public ICollection<ProductVisit>? ProductVisits { get; set; }
 
         public ICollection<ProductSelectedCategory>? ProductSelectedCategories { get; set; }
+
+        public ICollection<Comment>? Commetns { get; set; }
         
-        public ICollection<Comment>? Commetns{ get; set; }
+        public ICollection<OrderDetail>? OrderDetails{ get; set; }
+
 
         #endregion
 

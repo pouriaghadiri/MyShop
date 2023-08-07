@@ -7,9 +7,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace ShoppingSiteApi.DataAccess.Entities.Product
+namespace ShoppingSiteApi.DataAccess.Entities.Products
 {
-    public class Category:BasicEntity
+    public class Category : BasicEntity
     {
         #region Properties
 

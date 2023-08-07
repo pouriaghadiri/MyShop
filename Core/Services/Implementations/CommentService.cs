@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShoppingSiteApi.Core.DTOs.Products;
 using ShoppingSiteApi.Core.Services.Interfaces;
-using ShoppingSiteApi.DataAccess.Entities.Product;
+using ShoppingSiteApi.DataAccess.Entities.Products;
 using ShoppingSiteApi.DataAccess.Repository;
 using System;
 using System.Collections.Generic;

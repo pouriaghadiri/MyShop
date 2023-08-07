@@ -1,9 +1,9 @@
 ﻿using ShoppingSiteApi.Core.DTOs.Products;
 using ShoppingSiteApi.Core.Services.Interfaces;
-using ShoppingSiteApi.DataAccess.Entities.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingSiteApi.Core.Utilities.Extentions.Identity;
+using ShoppingSiteApi.DataAccess.Entities.Products;
 
 namespace ShoppingSiteApi.WebAPI.Controllers
 {
@@ -39,7 +39,6 @@ namespace ShoppingSiteApi.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public virtual async Task<IActionResult> Get(int id)
         {
-            var productGallery = await _productGalleryService.GetActiveProductGallery(id);
             var entity = await _productService.GetByID(id);
             if (entity == null)
             {
@@ -231,7 +230,7 @@ namespace ShoppingSiteApi.WebAPI.Controllers
 
         #endregion
 
-        #region Commetn
+        #region Comment
 
         [HttpGet("GetProductComments/{productId}")]
         public async Task<IActionResult> GetProductComment(int productId)

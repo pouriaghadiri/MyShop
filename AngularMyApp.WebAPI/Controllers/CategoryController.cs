@@ -1,9 +1,9 @@
 ﻿using ShoppingSiteApi.Core.Services.Implementations;
 using ShoppingSiteApi.Core.Services.Interfaces;
-using ShoppingSiteApi.DataAccess.Entities.Product;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingSiteApi.Core.DTOs.Products;
+using ShoppingSiteApi.DataAccess.Entities.Products;
 
 namespace ShoppingSiteApi.WebAPI.Controllers
 {

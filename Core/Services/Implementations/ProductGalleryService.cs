@@ -3,7 +3,7 @@ using ShoppingSiteApi.Core.Services.Interfaces;
 using ShoppingSiteApi.Core.Utilities.Extentions.PageingExtentions;
 using ShoppingSiteApi.Core.Utilities.Paging;
 using ShoppingSiteApi.DataAccess.Entities.Account;
-using ShoppingSiteApi.DataAccess.Entities.Product;
+using ShoppingSiteApi.DataAccess.Entities.Products;
 using ShoppingSiteApi.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
